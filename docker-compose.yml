@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  article:
+    build:
+      dockerfile: ./news_download/Dockerfile
+      context: ./news_download/
+    env_file:
+      - ./news_download/.env
+    container_name: news-collector-getarticle
+  text:
+    build:
+      dockerfile: ./news_text_update/Dockerfile
+      context: ./news_text_update/
+    env_file:
+      - ./news_text_update/.env
+    container_name: news-collector-gettext 
